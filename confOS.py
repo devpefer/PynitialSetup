@@ -73,7 +73,7 @@ def clonarRepositorios(gitUser="",gitPassword="",gitToken="",listaRepos="",lista
         os.system('runuser -l ' + user + ' -c \"cd ' + ruta + ' && git clone http://' + gitUser + ':' + gitPassword + '@github.com/' + gitUser + '/' + repositorio + '.git\"')
 
 def askPrograms():
-  listaProgramasAPT = ['git','libreoffice','arduino','snapd','libqt5designer5']
+  listaProgramasAPT = ['git','libreoffice','arduino','snapd','libqt5designer5','sequeler','spectator','simplenote']
   listaProgramasSNAP = ['intellij-idea-community','android-studio','joplin-james-carroll']
   listaProgramasToShow=[]
   listaProgramasToInstall=[]
