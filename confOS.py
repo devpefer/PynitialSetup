@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import subprocess
 import sys
 import stdiomask
 import json
@@ -10,8 +11,9 @@ def compruebaSistema():
   return platform
   
 def obtenerUSERHOME():
-
-  return os.getenv('SUDO_USER'),os.getenv('HOME')
+  USER=subprocess.check_output('echo $(logname)', shell=True).decode('utf-8').rstrip("\n")
+  HOME=os.path.expanduser('~'+USER)
+  return USER,HOME
 
 def crearDirectorio(user, directorio):
 
@@ -73,7 +75,7 @@ def clonarRepositorios(gitUser="",gitPassword="",gitToken="",listaRepos="",lista
         os.system('runuser -l ' + user + ' -c \"cd ' + ruta + ' && git clone http://' + gitUser + ':' + gitPassword + '@github.com/' + gitUser + '/' + repositorio + '.git\"')
 
 def askPrograms():
-  listaProgramasAPT = ['git','libreoffice','arduino','snapd','libqt5designer5','conky-all']
+  listaProgramasAPT = ['git','libreoffice','arduino','snapd','libqt5designer5','sequeler','spectator','simplenote','conky-all']
   listaProgramasSNAP = ['intellij-idea-community','android-studio','joplin-james-carroll']
   listaProgramasToShow=[]
   listaProgramasToInstall=[]
